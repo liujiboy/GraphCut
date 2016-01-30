@@ -159,7 +159,7 @@ private:
         cout<<"错误视差百分比:"<<bad_points/n*100<<endl;
     }
     //alpha beta swap
-    void alpha_beta_swap(int max_iter=10)
+    void alpha_beta_swap(int max_iter=5)
     {
         Mat backup;
         disp.copyTo(backup);
@@ -251,7 +251,7 @@ private:
         }
     }
     //α expansion
-    void alpha_expansion(int max_iter=10)
+    void alpha_expansion(int max_iter=5)
     {
         Mat backup;
         disp.copyTo(backup);
@@ -295,7 +295,7 @@ private:
                             double fp=disp.at<double>(alpha_id.row,alpha_id.col);
                             double fq=disp.at<double>(non_alpha_id.row,non_alpha_id.col);
                             if (fp==fq) {
-                                double cap=penalty(fp,fq);
+                                double cap=penalty(fp,alpha);
                                 g.add_edge(alpha_node_idxvec[i], non_alpha_node_idxvec[j], cap, cap);
                             }else
                             {
